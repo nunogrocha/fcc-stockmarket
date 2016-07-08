@@ -5,23 +5,15 @@ angular
     
     $scope.stocks = [];
     
-    socket.on('add stock', function(stocks){
+    socket.on('add stock', function(stocks) {
       console.log(stocks)
       $scope.stocks = StockService.getStocks(stocks).list.resources;
       console.log(StockService.getStocks($scope.stocks))
       $scope.$digest();
     });
       
-      
-      
-      /*
-      $("#addStock").click(function(){
-        socket.emit('add stock', $('#stockCode').val());
-        $('#stockCode').val('');
-        return false;
-      });
-      
-      
-      */
-  
-  }]);
+    $scope.addStock = function() {
+      socket.emit('add stock', $scope.stockSymbol);
+      $scope.stockSymbol = '';
+    }
+}]);

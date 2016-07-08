@@ -1,3 +1,16 @@
 body, md-content {
   background-color: #ededed;
 }
+
+md-input-container {
+  margin: 0px;
+}
+
+md-input-container .md-errors-spacer {
+  display: none;
+}
+
+md-card {
+  margin-left: 22px;
+  margin-right: 23px;
+}
