@@ -6,17 +6,19 @@ angular
       getStocks : function(stocks) {
         $http({
           method: 'GET',
-          url: 'http://finance.yahoo.com/webservice/v1/symbols/AAPL,GOOGL/quote?format=json&view=detail'
-        }).then(function successCallback(response) {
-            // this callback will be called asynchronously
-            // when the response is 
-            console.log(response)
-          }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-            console.log(response)
+          url: 'http://api.kibot.com?action=login&user=guest&password=guest'
+        }).then(function successCallback(r) {
+            $http.jsonp('http://api.kibot.com/?action=history&symbol=AAPL&interval=daily&period=30')
+            .then(function successCallback(response) {
+              console.log(response)
+              return response
+            }, function errorCallback(response) {
+              console.log(response)
+              return response
+            });
+          }, function errorCallback(r) {
           });
+   
       }
-      
     }     
 }]);

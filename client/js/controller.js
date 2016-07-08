@@ -5,9 +5,9 @@ angular
     
     $scope.stocks = [];
     
-    socket.on('add stock', function(stock){
-      $scope.stocks = stock;
-      StockService.getStocks($scope.stocks);
+    socket.on('add stock', function(stocks){
+      $scope.stocks = StockService.getStocks(stocks);
+      console.log(StockService.getStocks($scope.stocks))
       $scope.$digest();
     });
       
