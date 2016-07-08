@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket Stock Market</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+  </head>
+  <body ng-app="StockMarket">
+    <ul id="stocks"></ul>
+    <input id="stockCode" type="text" />
+    <button id="addStock">Add stock</button>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script> 
+    <script src="bower_components/angular-animate/angular-animate.js"></script> 
+    <script src="bower_components/angular-material/angular-material.js"></script> 
+    
+    <script src="js/app.js"></script>
+    <script src="js/controller.js"></script>
+    <script src="js/service.js"></script>
+    <script>
+      var socket = io();
+      /*
+      $("#addStock").click(function(){
+        socket.emit('add stock', $('#stockCode').val());
+        $('#stockCode').val('');
+        return false;
+      });
+      
+      socket.on('add stock', function(stock){
+        $("#stocks").empty();
+        $('#stocks').append($('<li>').text(stock));
+      });
+      */
+    </script>
+  </body>
+</html>
