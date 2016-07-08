@@ -7,9 +7,12 @@ angular
     
     socket.on('add stock', function(stocks) {
       console.log(stocks)
-      $scope.stocks = StockService.getStocks(stocks).list.resources;
-      console.log(StockService.getStocks($scope.stocks))
-      $scope.$digest();
+      var promise = StockService.getStocks(stocks);
+      promise.then(
+        function(payload) {
+          $scope.stocks = payload.data.list.resources;
+        }
+      );
     });
       
     $scope.addStock = function() {
