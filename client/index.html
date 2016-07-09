@@ -15,12 +15,23 @@
             <span>Socket Market</span>
           </h2>
           <span flex></span>
+          <a target="_blank" href="https://github.com/nunogrocha">
+            <md-button class="md-fab md-mini" aria-label="Favorite">
+              <i class="mdi mdi-github-circle" style="font-size: 25px; padding-top: 7px;"></i>
+            </md-button>
+          </a>
         </div>
       </md-toolbar>
       <md-content flex>
+        <div flex class="graphContent">
+          <div ng-show="loading" layout="row" layout-sm="column" layout-align="space-around">
+            <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+          </div>
+          <div id="graphAppend" style="width: 90%; height: 300px;"></div>
+        </div>
         <div layout="row" flex layout-wrap>
           
-          <md-card flex="30">
+          <md-card flex="30" style="padding-top: 14px;">
             <md-card-header>
               <md-card-header-text>
                 <md-input-container>
@@ -37,14 +48,16 @@
               <md-card-header-text>
                 <span class="md-title">{{stock.resource.fields.symbol}}</span>
                 <span class="md-subhead">{{stock.resource.fields.issuer_name}}</span>
+                <span class="md-subhead" ng-bind-html="getChange(stock.resource.fields.change)"></span>
               </md-card-header-text>
-              <md-button><i class="mdi mdi-close"></i></md-button>
+              <md-button ng-click="removeStock(stock.resource.fields.symbol)"><i class="mdi mdi-close"></i></md-button>
             </md-card-header>
           </md-card>
           
         </div>
       </md-content>
     </md-content>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script> 

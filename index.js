@@ -18,6 +18,13 @@ io.on('connection', function(socket){
     stocks.push(stock);
     io.emit('add stock', stocks);
   });
+  socket.on('remove stock', function(stock){
+    var index = stocks.indexOf(stock);    // <-- Not supported in <IE9
+    if (index !== -1) {
+        stocks.splice(index, 1);
+    }
+    io.emit('add stock', stocks);
+  });
 });
 
 http.listen(process.env.PORT || 3000);
