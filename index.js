@@ -15,11 +15,11 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
   io.emit('add stock', stocks);
   socket.on('add stock', function(stock){
-    stocks.push(stock);
+    stocks.push(stock.toUpperCase());
     io.emit('add stock', stocks);
   });
   socket.on('remove stock', function(stock){
-    var index = stocks.indexOf(stock);    // <-- Not supported in <IE9
+    var index = stocks.indexOf(stock);    
     if (index !== -1) {
         stocks.splice(index, 1);
     }
